@@ -7,7 +7,6 @@
             getInputFromUser();
             System.Console.WriteLine("all inputs were valid!, please press enter");
             System.Console.ReadLine();
-
         }
         private static void getInputFromUser()
         {
