@@ -1,4 +1,4 @@
-﻿namespace Ex1_01
+﻿namespace Ex1_01 // change 4 to 9 , check how to print
 {
     public class Program
     {
@@ -20,6 +20,60 @@
             printDecimalAscendingOrder(firstDecimal, secondDecimal, thirdDecimal);
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0');
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1');
+            printNumOfPowsOfTwo(firstNumberStr,secondNumberStr, thirdNumberStr);
+        }
+
+        private static void printNumOfPowsOfTwo(string i_FirstStr, string i_SecondStr, string i_ThirdStr)
+        {
+            int numPowersOfTwo = 0;
+            string strToPrint;
+
+            if(isPowOfTwo(i_FirstStr))
+            {
+                numPowersOfTwo++;
+            }
+
+            if (isPowOfTwo(i_SecondStr))
+            {
+                numPowersOfTwo++;
+            }
+
+            if (isPowOfTwo(i_ThirdStr))
+            {
+                numPowersOfTwo++;
+            }
+
+            strToPrint = string.Format("The number of powers of two is:{0}", numPowersOfTwo);
+            System.Console.WriteLine(strToPrint);
+        }
+
+        private static bool isPowOfTwo(string i_StrToCheck)
+        {
+            int numOfOnes = 0;
+            int digits = 0;
+            bool powOfTwo = true;
+
+            if(i_StrToCheck == "0000") // change to 9 zeroes
+            {
+                powOfTwo = false;
+            }
+
+            while(powOfTwo && digits < 4)
+            {
+                if (i_StrToCheck[digits]  == '1')
+                {
+                    numOfOnes++;
+                }
+
+                if(numOfOnes > 1)
+                {
+                    powOfTwo = false;
+                }
+
+                digits++;
+            }
+            
+            return powOfTwo;
         }
         private static void printAvgNumberOfChar (string i_FirstStr, string i_SecondStr, string i_ThirdStr,char i_Char)
         {
@@ -33,10 +87,12 @@
                 {
                     numOfCharOccurrences++;
                 }
+
                 if (i_SecondStr[i] == i_Char)
                 {
                     numOfCharOccurrences++;
                 }
+
                 if (i_ThirdStr[i] == i_Char)
                 {
                     numOfCharOccurrences++;
