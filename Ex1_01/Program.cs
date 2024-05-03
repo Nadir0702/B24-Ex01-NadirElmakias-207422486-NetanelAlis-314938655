@@ -23,24 +23,56 @@ namespace Ex1_01
             getMin(firstDecimal, secondDecimal, thirdDecimal, out minDecimalNumber);
             printConvertedDecimalsAscendingOrder(firstDecimal, secondDecimal, thirdDecimal,
                                                  maxDecimalNumber, minDecimalNumber);
-            printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0');
-            printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1');
-            printNumOfPowsOfTwo(firstNumberStr, secondNumberStr, thirdNumberStr);
-            printNumOfAscendingDigitsNumbers(firstDecimal, secondDecimal, thirdDecimal);
+            handleStatistics(firstNumberStr, secondNumberStr, thirdNumberStr,
+                             firstDecimal, secondDecimal, thirdDecimal,
+                             maxDecimalNumber, minDecimalNumber);
             System.Console.ReadLine();
         }
 
-        private static void getMax(int i_FirstNum, int i_SecondNum, int i_ThirdNum, out int o_maxNum)
+        private static void handleStatistics(string firstNumberStr, string secondNumberStr, string thirdNumberStr,
+                                             int firstDecimal, int secondDecimal, int thirdDecimal,
+                                             int maxDecimalNumber, int minDecimalNumber)
         {
-            o_maxNum = System.Math.Max(System.Math.Max(i_FirstNum, i_SecondNum), i_ThirdNum);
+            float avgNumOfZeros;
+            float avgNumOfOnes;
+            int numOfPowsOfTwo;
+            int numOfAscendingDigitsNumbers;
+
+            getAvgOccurrencesOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0', out avgNumOfZeros);
+            getAvgOccurrencesOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1', out avgNumOfOnes);
+            getNumOfPowsOfTwo(firstNumberStr, secondNumberStr, thirdNumberStr, out numOfPowsOfTwo);
+            getNumOfAscendingDigitsNumbers(firstDecimal, secondDecimal, thirdDecimal,
+                                           out numOfAscendingDigitsNumbers);
+            printStatistics(avgNumOfZeros, avgNumOfOnes, numOfPowsOfTwo, numOfAscendingDigitsNumbers,
+                            minDecimalNumber, maxDecimalNumber);
         }
 
-        private static void getMin(int i_FirstNum, int i_SecondNum, int i_ThirdNum, out int o_minNum)
+        private static void printStatistics(float i_AvgNumOfZeros, float i_AvgNumOfOnes, int i_NumOfPowsOfTwo,
+                                            int i_NumOfAscendingDigitsNumbers, int i_MinNum, int i_MaxNum)
         {
-            o_minNum = System.Math.Max(System.Math.Max(i_FirstNum, i_SecondNum), i_ThirdNum);
+            string statisticsStr = string.Format(@"The average number of 0's is: {0}
+The average number of 1's is: {1}
+The number of powers of 2 is: {2}
+The number of ascending digits numbers is: {3}
+The max number is: {4}
+The min number is: {5}",i_AvgNumOfZeros, i_AvgNumOfOnes, i_NumOfPowsOfTwo, i_NumOfAscendingDigitsNumbers,
+                        i_MaxNum, i_MinNum);
+
+            System.Console.WriteLine(statisticsStr);
         }
 
-        private static void printNumOfAscendingDigitsNumbers(int i_FirstNum, int i_SecondNum, int i_ThirdNum)
+        private static void getMax(int i_FirstNum, int i_SecondNum, int i_ThirdNum, out int o_MaxNum)
+        {
+            o_MaxNum = System.Math.Max(System.Math.Max(i_FirstNum, i_SecondNum), i_ThirdNum);
+        }
+
+        private static void getMin(int i_FirstNum, int i_SecondNum, int i_ThirdNum, out int o_MinNum)
+        {
+            o_MinNum = System.Math.Min(System.Math.Min(i_FirstNum, i_SecondNum), i_ThirdNum);
+        }
+
+        private static void getNumOfAscendingDigitsNumbers(int i_FirstNum, int i_SecondNum, int i_ThirdNum,
+            out int o_NumOfAscendingDigitsNumbers)
         {
             int numOfAscendingDigitsNumbers = 0;
             string resultStr;
@@ -60,8 +92,7 @@ namespace Ex1_01
                 numOfAscendingDigitsNumbers++;
             }
 
-            resultStr = string.Format("The number of ascending digits numbers is: {0}", numOfAscendingDigitsNumbers);
-            System.Console.WriteLine(resultStr);
+            o_NumOfAscendingDigitsNumbers = numOfAscendingDigitsNumbers;
         }
 
         private static bool isAscendingDigits(int i_number)
@@ -83,12 +114,15 @@ namespace Ex1_01
                 {
                     ascendingDigits = false;
                 }
+
+                currentOnesDigit = nextOnesDigit;
             }
 
             return ascendingDigits;
         }
 
-        private static void printNumOfPowsOfTwo(string i_FirstStr, string i_SecondStr, string i_ThirdStr)
+        private static void getNumOfPowsOfTwo(string i_FirstStr, string i_SecondStr, string i_ThirdStr,
+                                                out int o_NumOfPowsOfTwo)
         {
             int numOfPowsOfTwo = 0;
             string resultStr;
@@ -108,8 +142,7 @@ namespace Ex1_01
                 numOfPowsOfTwo++;
             }
 
-            resultStr = string.Format("The number of powers of 2 is: {0}",numOfPowsOfTwo);
-            System.Console.WriteLine(resultStr);
+            o_NumOfPowsOfTwo = numOfPowsOfTwo;
         }
 
         private static bool isPowOfTwo(string i_strToCheck)
@@ -118,12 +151,12 @@ namespace Ex1_01
             int digit = 0;
             bool powOfTwo = true;
 
-            if(i_strToCheck == "0000")
+            if(i_strToCheck == "000000000")
             {
                 powOfTwo = false;
             }
 
-            while(powOfTwo && digit < 4)
+            while(powOfTwo && digit < 9)
             {
                 if(i_strToCheck[digit] == '1')
                 {
@@ -141,34 +174,30 @@ namespace Ex1_01
             return powOfTwo;
         }
 
-        private static void printAvgNumberOfChar(string i_FirstStr, string i_SecondStr, string i_ThirdStr,
-                                                 char i_char)
+        private static void getAvgOccurrencesOfChar(string i_FirstStr, string i_SecondStr, string i_ThirdStr,
+                                                 char i_Char, out float o_AvgNumOfCharOccurrences)
         {
-            float avgNumOfCharOccurrences;
             float numOfCharOccurrences = 0;
-            string resultStr;
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 9; i++)
             {
-                if (i_FirstStr[i] == i_char)
+                if (i_FirstStr[i] == i_Char)
                 {
                     numOfCharOccurrences++;
                 }
 
-                if (i_SecondStr[i] == i_char)
+                if (i_SecondStr[i] == i_Char)
                 {
                     numOfCharOccurrences++;
                 }
 
-                if (i_ThirdStr[i] == i_char)
+                if (i_ThirdStr[i] == i_Char)
                 {
                     numOfCharOccurrences++;
                 }
             }
 
-            avgNumOfCharOccurrences = numOfCharOccurrences / 3;
-            resultStr = string.Format("The average number of {0}'s is: {1}", i_char, avgNumOfCharOccurrences);
-            System.Console.WriteLine(resultStr);
+            o_AvgNumOfCharOccurrences = numOfCharOccurrences / 3;
         }
 
         private static void printConvertedDecimalsAscendingOrder(int i_FirstNum, int i_SecondNum, int i_ThirdNum,
@@ -228,7 +257,7 @@ namespace Ex1_01
 
         private static void checkIfInputValid(ref string io_StrToCheck)
         {
-            while(io_StrToCheck.Length != 4 ||
+            while(io_StrToCheck.Length != 9 ||
                   !isBinaryNumber(io_StrToCheck))
             {
                 System.Console.WriteLine("The input you entered is invalid. Please try again.");
@@ -241,7 +270,7 @@ namespace Ex1_01
             bool binaryValid = true;
             int currCharIndexInStr = 0;
 
-            while(currCharIndexInStr < 4 && binaryValid)
+            while(currCharIndexInStr < 9 && binaryValid)
             {
                 if (i_StrToCheck[currCharIndexInStr] != '1' &&
                     i_StrToCheck[currCharIndexInStr] != '0')
