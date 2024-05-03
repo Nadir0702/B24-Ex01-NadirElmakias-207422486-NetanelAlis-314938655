@@ -1,5 +1,4 @@
-﻿
-namespace Ex1_01
+﻿namespace Ex1_01
 {
     public class Program
     {
@@ -18,9 +17,35 @@ namespace Ex1_01
             binaryToDecimal(out firstDecimal,firstNumberStr);
             binaryToDecimal(out secondDecimal, secondNumberStr);
             binaryToDecimal(out thirdDecimal, thirdNumberStr);
-            printDecimalAscendingOrder(firstDecimal, secondDecimal, thirdDecimal);  
+            printDecimalAscendingOrder(firstDecimal, secondDecimal, thirdDecimal);
+            printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0');
+            printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1');
         }
+        private static void printAvgNumberOfChar (string i_FirstStr, string i_SecondStr, string i_ThirdStr,char i_Char)
+        {
+            float numOfCharOccurrences = 0;
+            string strToPrint;
+            float avgNumberOfOccurrences;
 
+            for (int i = 0; i < 4; i++) 
+            {
+                if (i_FirstStr[i] == i_Char)
+                {
+                    numOfCharOccurrences++;
+                }
+                if (i_SecondStr[i] == i_Char)
+                {
+                    numOfCharOccurrences++;
+                }
+                if (i_ThirdStr[i] == i_Char)
+                {
+                    numOfCharOccurrences++;
+                }
+            }
+            avgNumberOfOccurrences = numOfCharOccurrences / 3;
+            strToPrint = string.Format("The avg number of {0} is: {1}", i_Char, avgNumberOfOccurrences);
+            System.Console.WriteLine(strToPrint);
+        }
         private static void printDecimalAscendingOrder (int i_firstNum, int i_SecondNum, int i_ThirdNum)
         {
             int maxNumber;
@@ -47,7 +72,6 @@ namespace Ex1_01
 
           System.Console.WriteLine(resultStr);
         }
-
         private static void binaryToDecimal(out int o_DecimalNumber, string i_binaryStr)
         {
             int decimalNumber = 0;
