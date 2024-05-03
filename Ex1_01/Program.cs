@@ -10,20 +10,32 @@
             int firstDecimal;
             int secondDecimal;
             int thirdDecimal;
+            int minNumberDecimal;
+            int maxNumberDecimal;
 
             getInputFromUser(out firstNumberStr,out secondNumberStr,out thirdNumberStr);
-            System.Console.WriteLine("all inputs were valid!, please press enter");
-            System.Console.ReadLine();
             binaryToDecimal(out firstDecimal,firstNumberStr);
             binaryToDecimal(out secondDecimal, secondNumberStr);
             binaryToDecimal(out thirdDecimal, thirdNumberStr);
-            printDecimalAscendingOrder(firstDecimal, secondDecimal, thirdDecimal);
+            getMax(firstDecimal, secondDecimal, thirdDecimal, out maxNumberDecimal);
+            getMin(firstDecimal, secondDecimal, thirdDecimal, out minNumberDecimal);
+            printDecimalAscendingOrder(firstDecimal, secondDecimal, thirdDecimal, maxNumberDecimal, minNumberDecimal);
+
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0');
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1');
             printNumOfPowsOfTwo(firstNumberStr,secondNumberStr, thirdNumberStr);
             printNumOfAscendingsDigitNumber(firstDecimal, secondDecimal, thirdDecimal); 
         }
 
+        private static void getMax(int i_FirstNum, int i_SecondNum, int i_ThirdNum,out int i_Max)
+        {
+            i_Max = System.Math.Max(i_ThirdNum, System.Math.Max(i_FirstNum, i_SecondNum));
+        }
+
+        private static void getMin(int i_FirstNum, int i_SecondNum, int i_ThirdNum, out int i_Min)
+        {
+            i_Min = System.Math.Min(i_ThirdNum, System.Math.Min(i_FirstNum, i_SecondNum));
+        }
         private static void printNumOfAscendingsDigitNumber(int i_FirstNum, int i_SecondNum, int i_ThirdNum)
         {
 
@@ -150,20 +162,16 @@
             strToPrint = string.Format("The avg number of {0} is: {1}", i_Char, avgNumberOfOccurrences);
             System.Console.WriteLine(strToPrint);
         }
-        private static void printDecimalAscendingOrder (int i_firstNum, int i_SecondNum, int i_ThirdNum)
+        private static void printDecimalAscendingOrder (int i_firstNum, int i_SecondNum, int i_ThirdNum,int i_maxNumber, int i_minNumber)
         {
-            int maxNumber;
             int middleNumber;
-            int minNumber;
             string resultStr;
 
-            maxNumber = System.Math.Max(i_ThirdNum, System.Math.Max(i_firstNum, i_SecondNum));
-            minNumber = System.Math.Min(i_ThirdNum, System.Math.Min(i_firstNum, i_SecondNum));
-            if(i_firstNum != maxNumber && i_firstNum != minNumber)
+            if(i_firstNum != i_maxNumber && i_firstNum != i_minNumber)
             {
                 middleNumber = i_firstNum;
             }
-            else if(i_SecondNum != maxNumber && i_SecondNum != minNumber)
+            else if(i_SecondNum != i_maxNumber && i_SecondNum != i_minNumber)
             {
                 middleNumber = i_SecondNum;
             }
@@ -172,7 +180,7 @@
                 middleNumber = i_ThirdNum;
             }
 
-          resultStr = string.Format("The Decimals numbers are: {0}, {1}, {2}",minNumber,middleNumber,maxNumber);
+          resultStr = string.Format("The Decimals numbers are: {0}, {1}, {2}",i_minNumber,middleNumber,i_maxNumber);
 
           System.Console.WriteLine(resultStr);
         }
