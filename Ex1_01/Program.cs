@@ -12,17 +12,32 @@ namespace Ex1_01
             int firstDecimal;
             int secondDecimal;
             int thirdDecimal;
+            int minDecimalNumber;
+            int maxDecimalNumber;
 
             getInputFromUser(out firstNumberStr, out secondNumberStr, out thirdNumberStr);
             binaryToDecimal(out firstDecimal, firstNumberStr);
             binaryToDecimal(out secondDecimal, secondNumberStr);
             binaryToDecimal(out thirdDecimal, thirdNumberStr);
-            printConvertedDecimalsAscendingOrder(firstDecimal, secondDecimal, thirdDecimal);
+            getMax(firstDecimal, secondDecimal, thirdDecimal, out maxDecimalNumber);
+            getMin(firstDecimal, secondDecimal, thirdDecimal, out minDecimalNumber);
+            printConvertedDecimalsAscendingOrder(firstDecimal, secondDecimal, thirdDecimal,
+                                                 maxDecimalNumber, minDecimalNumber);
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0');
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1');
             printNumOfPowsOfTwo(firstNumberStr, secondNumberStr, thirdNumberStr);
             printNumOfAscendingDigitsNumbers(firstDecimal, secondDecimal, thirdDecimal);
             System.Console.ReadLine();
+        }
+
+        private static void getMax(int i_FirstNum, int i_SecondNum, int i_ThirdNum, out int o_maxNum)
+        {
+            o_maxNum = System.Math.Max(System.Math.Max(i_FirstNum, i_SecondNum), i_ThirdNum);
+        }
+
+        private static void getMin(int i_FirstNum, int i_SecondNum, int i_ThirdNum, out int o_minNum)
+        {
+            o_minNum = System.Math.Max(System.Math.Max(i_FirstNum, i_SecondNum), i_ThirdNum);
         }
 
         private static void printNumOfAscendingDigitsNumbers(int i_FirstNum, int i_SecondNum, int i_ThirdNum)
@@ -126,7 +141,8 @@ namespace Ex1_01
             return powOfTwo;
         }
 
-        private static void printAvgNumberOfChar(string i_FirstStr, string i_SecondStr, string i_ThirdStr, char i_char)
+        private static void printAvgNumberOfChar(string i_FirstStr, string i_SecondStr, string i_ThirdStr,
+                                                 char i_char)
         {
             float avgNumOfCharOccurrences;
             float numOfCharOccurrences = 0;
@@ -155,20 +171,17 @@ namespace Ex1_01
             System.Console.WriteLine(resultStr);
         }
 
-        private static void printConvertedDecimalsAscendingOrder(int i_FirstNum, int i_SecondNum, int i_ThirdNum)
+        private static void printConvertedDecimalsAscendingOrder(int i_FirstNum, int i_SecondNum, int i_ThirdNum,
+                                                                 int i_maxNum, int i_minNum)
         {
-            int max;
             int middle;
-            int min;
             string resultStr;
 
-            max = System.Math.Max(System.Math.Max(i_FirstNum, i_SecondNum), i_ThirdNum);
-            min = System.Math.Min(System.Math.Min(i_FirstNum, i_SecondNum), i_ThirdNum);
-            if(i_FirstNum != max && i_FirstNum != min)
+            if(i_FirstNum != i_maxNum && i_FirstNum != i_minNum)
             {
                 middle = i_FirstNum;
             }
-            else if(i_SecondNum != max && i_SecondNum != min)
+            else if(i_SecondNum != i_maxNum && i_SecondNum != i_minNum)
             {
                 middle = i_SecondNum;
             }
@@ -177,7 +190,7 @@ namespace Ex1_01
                 middle = i_ThirdNum;
             }
 
-            resultStr = string.Format("The decimal numbers are: {0}, {1}, {2}", min, middle, max);
+            resultStr = string.Format("The decimal numbers are: {0}, {1}, {2}", i_minNum, middle, i_maxNum);
             System.Console.WriteLine(resultStr);
         }
 
