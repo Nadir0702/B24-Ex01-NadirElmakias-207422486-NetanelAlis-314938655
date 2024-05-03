@@ -21,6 +21,55 @@
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0');
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1');
             printNumOfPowsOfTwo(firstNumberStr,secondNumberStr, thirdNumberStr);
+            printNumOfAscendingsDigitNumber(firstDecimal, secondDecimal, thirdDecimal); 
+        }
+
+        private static void printNumOfAscendingsDigitNumber(int i_FirstNum, int i_SecondNum, int i_ThirdNum)
+        {
+
+            int numPowersOfTwo = 0;
+            string strToPrint;
+
+            if (isAcendingDigits(i_FirstNum))
+            {
+                numPowersOfTwo++;
+            }
+
+            if (isAcendingDigits(i_SecondNum))
+            {
+                numPowersOfTwo++;
+            }
+
+            if (isAcendingDigits(i_ThirdNum))
+            {
+                numPowersOfTwo++;
+            }
+
+            strToPrint = string.Format("The number of ascendingsDigits is:{0}", numPowersOfTwo);
+            System.Console.WriteLine(strToPrint);
+        }
+        private static bool isAcendingDigits(int i_Number)
+        {
+            bool acendingDigits = true;
+            int currentOnesDigit = i_Number % 10;
+            int nextOnesDigit;
+
+            if(i_Number > 10)
+            {
+                acendingDigits = false;
+            }
+
+            while (acendingDigits && i_Number > 0)
+            {
+                i_Number /= 10;
+                nextOnesDigit = i_Number % 10;
+                if(nextOnesDigit >= currentOnesDigit)
+                {
+                    acendingDigits = false;
+                }
+            }
+
+            return acendingDigits;
         }
 
         private static void printNumOfPowsOfTwo(string i_FirstStr, string i_SecondStr, string i_ThirdStr)
@@ -46,7 +95,6 @@
             strToPrint = string.Format("The number of powers of two is:{0}", numPowersOfTwo);
             System.Console.WriteLine(strToPrint);
         }
-
         private static bool isPowOfTwo(string i_StrToCheck)
         {
             int numOfOnes = 0;
