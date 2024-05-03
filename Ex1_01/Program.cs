@@ -1,5 +1,4 @@
-﻿
-namespace Ex1_01
+﻿namespace Ex1_01
 {
     public class Program
     {
@@ -17,8 +16,38 @@ namespace Ex1_01
             binaryToDecimal(out secondDecimal, secondNumberStr);
             binaryToDecimal(out thirdDecimal, thirdNumberStr);
             printConvertedDecimalsAscendingOrder(firstDecimal, secondDecimal, thirdDecimal);
-
+            printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0');
+            printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1');
             System.Console.ReadLine();
+        }
+
+        private static void printAvgNumberOfChar(string i_FirstStr, string i_SecondStr, string i_ThirdStr, char i_char)
+        {
+            float avgNumOfCharOccurrences;
+            float numOfCharOccurrences = 0;
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (i_FirstStr[i] == i_char)
+                {
+                    numOfCharOccurrences++;
+                }
+
+                if (i_SecondStr[i] == i_char)
+                {
+                    numOfCharOccurrences++;
+                }
+
+                if (i_ThirdStr[i] == i_char)
+                {
+                    numOfCharOccurrences++;
+                }
+            }
+
+            avgNumOfCharOccurrences = numOfCharOccurrences / 3;
+            string resultStr = string.Format("The average number of {0}'s is: {1}", i_char, avgNumOfCharOccurrences);
+
+            System.Console.WriteLine(resultStr);
         }
 
         private static void printConvertedDecimalsAscendingOrder(int i_FirstNum, int i_SecondNum, int i_ThirdNum)
