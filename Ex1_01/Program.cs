@@ -1,31 +1,87 @@
-﻿namespace Ex1_01
+﻿
+namespace Ex1_01
 {
     public class Program
     {
         private static void Main()
         {
-            getInputFromUser();
-            System.Console.WriteLine("all inputs were valid!, please press enter");
-            System.Console.ReadLine();
-        }
-        private static void getInputFromUser()
-        {
             string firstNumberStr;
             string secondNumberStr;
             string thirdNumberStr;
+            int firstDecimal;
+            int secondDecimal;
+            int thirdDecimal;
 
-            System.Console.WriteLine("Please enter 3 binary numbers with 9 digits each:");
-            firstNumberStr = System.Console.ReadLine();
-            checkIfInputValid(firstNumberStr);
-            secondNumberStr = System.Console.ReadLine();
-            checkIfInputValid(secondNumberStr);
-            thirdNumberStr = System.Console.ReadLine();
-            checkIfInputValid(thirdNumberStr);
+            getInputFromUser(out firstNumberStr,out secondNumberStr,out thirdNumberStr);
+            System.Console.WriteLine("all inputs were valid!, please press enter");
+            System.Console.ReadLine();
+            binaryToDecimal(out firstDecimal,firstNumberStr);
+            binaryToDecimal(out secondDecimal, secondNumberStr);
+            binaryToDecimal(out thirdDecimal, thirdNumberStr);
+            printDecimalAscendingOrder(firstDecimal, secondDecimal, thirdDecimal);  
         }
 
-        private static void checkIfInputValid(string io_StrToCheck)
+        private static void printDecimalAscendingOrder (int i_firstNum, int i_SecondNum, int i_ThirdNum)
         {
-            while(io_StrToCheck.Length != 9 ||
+            int maxNumber;
+            int middleNumber;
+            int minNumber;
+            string resultStr;
+
+            maxNumber = System.Math.Max(i_ThirdNum, System.Math.Max(i_firstNum, i_SecondNum));
+            minNumber = System.Math.Min(i_ThirdNum, System.Math.Min(i_firstNum, i_SecondNum));
+            if(i_firstNum != maxNumber && i_firstNum != minNumber)
+            {
+                middleNumber = i_firstNum;
+            }
+            else if(i_SecondNum != maxNumber && i_SecondNum != minNumber)
+            {
+                middleNumber = i_SecondNum;
+            }
+            else
+            {
+                middleNumber = i_ThirdNum;
+            }
+
+          resultStr = string.Format("The Decimals numbers are: {0}, {1}, {2}",minNumber,middleNumber,maxNumber);
+
+          System.Console.WriteLine(resultStr);
+        }
+
+        private static void binaryToDecimal(out int o_DecimalNumber, string i_binaryStr)
+        {
+            int decimalNumber = 0;
+            int binaryNumber = int.Parse(i_binaryStr);
+            int binaryDigit = 0;
+            int currentBinaryMsb;
+
+            while (binaryNumber > 0)
+            {
+                currentBinaryMsb = binaryNumber % 10;
+                currentBinaryMsb *= (int)System.Math.Pow(2, binaryDigit);
+                decimalNumber += currentBinaryMsb;
+                binaryDigit++;
+                binaryNumber /= 10;
+            }
+
+            o_DecimalNumber = decimalNumber;
+        }
+        private static void getInputFromUser(out string o_FirstNumberStr,
+            out string o_SecondNumberStr,
+            out string o_ThirdNumberStr)
+        {
+            System.Console.WriteLine("Please enter 3 binary numbers with 9 digits each:");
+            o_FirstNumberStr = System.Console.ReadLine();
+            checkIfInputValid(ref o_FirstNumberStr);
+            o_SecondNumberStr = System.Console.ReadLine();
+            checkIfInputValid(ref o_SecondNumberStr);
+            o_ThirdNumberStr = System.Console.ReadLine();
+            checkIfInputValid(ref o_ThirdNumberStr);
+        }
+
+        private static void checkIfInputValid(ref string io_StrToCheck)// change 4 to 9
+        {
+            while(io_StrToCheck.Length != 4 ||
                   !isBinaryNumber(io_StrToCheck))
             {
                 System.Console.WriteLine("The input you entered is invalid. Please try again.");
