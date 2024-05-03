@@ -1,4 +1,6 @@
-﻿namespace Ex1_01
+﻿using System;
+
+namespace Ex1_01
 {
     public class Program
     {
@@ -18,13 +20,68 @@
             printConvertedDecimalsAscendingOrder(firstDecimal, secondDecimal, thirdDecimal);
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0');
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1');
+            printNumOfPowsOfTwo(firstNumberStr, secondNumberStr, thirdNumberStr);
             System.Console.ReadLine();
+        }
+
+        private static void printNumOfPowsOfTwo(string i_FirstStr, string i_SecondStr, string i_ThirdStr)
+        {
+            int numOfPowsOfTwo = 0;
+            string resultStr;
+
+            if (isPowOfTwo(i_FirstStr))
+            {
+                numOfPowsOfTwo++;
+            }
+
+            if (isPowOfTwo(i_SecondStr))
+            {
+                numOfPowsOfTwo++;
+            }
+
+            if (isPowOfTwo(i_ThirdStr))
+            {
+                numOfPowsOfTwo++;
+            }
+
+            resultStr = string.Format("The number of powers of 2 is: {0}",numOfPowsOfTwo);
+            System.Console.WriteLine(resultStr);
+        }
+
+        private static bool isPowOfTwo(string i_strToCheck)
+        {
+            int numOfOnes = 0;
+            int digit = 0;
+            bool powOfTwo = true;
+
+            if(i_strToCheck == "0000")
+            {
+                powOfTwo = false;
+            }
+
+            while(powOfTwo && digit < 4)
+            {
+                if(i_strToCheck[digit] == '1')
+                {
+                    numOfOnes++;
+                }
+                
+                if(numOfOnes > 1)
+                {
+                    powOfTwo = false;
+                }
+
+                digit++;
+            }
+
+            return powOfTwo;
         }
 
         private static void printAvgNumberOfChar(string i_FirstStr, string i_SecondStr, string i_ThirdStr, char i_char)
         {
             float avgNumOfCharOccurrences;
             float numOfCharOccurrences = 0;
+            string resultStr;
 
             for (int i = 0; i < 4; i++)
             {
@@ -45,8 +102,7 @@
             }
 
             avgNumOfCharOccurrences = numOfCharOccurrences / 3;
-            string resultStr = string.Format("The average number of {0}'s is: {1}", i_char, avgNumOfCharOccurrences);
-
+            resultStr = string.Format("The average number of {0}'s is: {1}", i_char, avgNumOfCharOccurrences);
             System.Console.WriteLine(resultStr);
         }
 
@@ -73,7 +129,6 @@
             }
 
             resultStr = string.Format("The decimal numbers are: {0}, {1}, {2}", min, middle, max);
-
             System.Console.WriteLine(resultStr);
         }
 
