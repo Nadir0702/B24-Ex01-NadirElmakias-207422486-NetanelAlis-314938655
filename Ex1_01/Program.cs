@@ -21,7 +21,56 @@ namespace Ex1_01
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0');
             printAvgNumberOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1');
             printNumOfPowsOfTwo(firstNumberStr, secondNumberStr, thirdNumberStr);
+            printNumOfAscendingDigitsNumbers(firstDecimal, secondDecimal, thirdDecimal);
             System.Console.ReadLine();
+        }
+
+        private static void printNumOfAscendingDigitsNumbers(int i_FirstNum, int i_SecondNum, int i_ThirdNum)
+        {
+            int numOfAscendingDigitsNumbers = 0;
+            string resultStr;
+
+            if (isAscendingDigits(i_FirstNum))
+            {
+                numOfAscendingDigitsNumbers++;
+            }
+
+            if (isAscendingDigits(i_SecondNum))
+            {
+                numOfAscendingDigitsNumbers++;
+            }
+
+            if (isAscendingDigits(i_ThirdNum))
+            {
+                numOfAscendingDigitsNumbers++;
+            }
+
+            resultStr = string.Format("The number of ascending digits numbers is: {0}", numOfAscendingDigitsNumbers);
+            System.Console.WriteLine(resultStr);
+        }
+
+        private static bool isAscendingDigits(int i_number)
+        {
+            bool ascendingDigits = true;
+            int currentOnesDigit = i_number % 10;
+            int nextOnesDigit;
+
+            if(i_number < 10)
+            {
+                ascendingDigits = false;
+            }
+
+            while(ascendingDigits && i_number > 0)
+            {
+                i_number /= 10;
+                nextOnesDigit = i_number % 10;
+                if(nextOnesDigit >= currentOnesDigit)
+                {
+                    ascendingDigits = false;
+                }
+            }
+
+            return ascendingDigits;
         }
 
         private static void printNumOfPowsOfTwo(string i_FirstStr, string i_SecondStr, string i_ThirdStr)
