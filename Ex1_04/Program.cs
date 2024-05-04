@@ -1,4 +1,6 @@
-﻿namespace Ex1_04
+﻿using System.IO.Pipes;
+
+namespace Ex1_04
 {
     internal class Program
     {
@@ -9,15 +11,38 @@
             getInputFromUser(out str);
             System.Console.WriteLine($"{str} is {(isPalindrome(str) ? "" : "Not ")}a Palindrome!");
             System.Console.WriteLine($"{str} is {(isDivisableByFour(str) ? "" : "Not ")}divisable by 4");
+            printNumberOfLowercaseChars(str);
             System.Console.ReadLine();
+        }
+
+        private static void printNumberOfLowercaseChars(string i_Str)
+        {
+            int numOfLowercaseChars = 0;
+
+            if(char.IsLetter(i_Str[0]))
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    if (char.IsLower(i_Str[i]))
+                    {
+                        numOfLowercaseChars++;
+                    }
+                }
+
+                System.Console.WriteLine($"Number of lowercase letters in {i_Str}: {numOfLowercaseChars}");
+            }
+            else
+            {
+                System.Console.WriteLine($"{i_Str} is a number, it has no lowercase letters");
+            }
         }
 
         private static bool isDivisableByFour(string i_StrToCheck)
         {
             bool divisable = true;
-            uint numberToCheck;
+            ulong numberToCheck;
 
-            if(!uint.TryParse(i_StrToCheck, out numberToCheck))
+            if(!ulong.TryParse(i_StrToCheck, out numberToCheck))
             {
                 divisable = false;
             }
