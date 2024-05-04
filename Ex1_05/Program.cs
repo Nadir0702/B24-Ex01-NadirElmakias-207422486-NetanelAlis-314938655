@@ -4,10 +4,14 @@
     {
         private static void Main()
         {
+            runProgram();
+        }
+
+        private static void runProgram()
+        {
             string numberStr;
             uint number = getInputFromUser(out numberStr);
 
-            System.Console.WriteLine($"{number} is valid!");
             printNumOfDigitsSmallerThanOnes(number);
             printNumOfDigitsDivisableByThree(number);
             printLargestDigit(number);

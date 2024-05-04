@@ -4,6 +4,11 @@
     {
         private static void Main()
         {
+            runProgram();
+        }
+
+        private static void runProgram()
+        {
             string str;
 
             getInputFromUser(out str);
