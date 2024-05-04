@@ -1,0 +1,8 @@
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_04\bin\Debug\Ex1_04.exe.config
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_04\bin\Debug\Ex1_04.exe
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_04\bin\Debug\Ex1_04.pdb
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_04\obj\Debug\Ex1_04.csproj.AssemblyReference.cache
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_04\obj\Debug\Ex1_04.csproj.SuggestedBindingRedirects.cache
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_04\obj\Debug\Ex1_04.csproj.CoreCompileInputs.cache
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_04\obj\Debug\Ex1_04.exe
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_04\obj\Debug\Ex1_04.pdb
