@@ -6,9 +6,29 @@
         {
             string numberStr;
             uint number = getInputFromUser(out numberStr);
-            System.Console.WriteLine($"{number} is valid!");
 
+            System.Console.WriteLine($"{number} is valid!");
+            printNumOfDigitsSmallerThanOnes(number);
             System.Console.ReadLine();
+        }
+
+        private static void printNumOfDigitsSmallerThanOnes(uint i_number)
+        {
+            uint onesDigit = i_number % 10;
+            uint currentDigit;
+            uint numOfDigits = 0;
+            
+            for (int i = 0; i < 7; i++)
+            {
+                i_number /= 10;
+                currentDigit = i_number % 10;
+                if (currentDigit < onesDigit)
+                {
+                    numOfDigits++;
+                }
+            } 
+
+            System.Console.WriteLine($"Number of digits smaller than {onesDigit}: {numOfDigits}");
         }
 
         private static uint getInputFromUser(out string o_numberStr)
