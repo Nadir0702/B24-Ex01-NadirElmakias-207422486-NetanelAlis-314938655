@@ -1,6 +1,6 @@
 ﻿namespace Ex1_02
 {
-    class Program
+    public class Program
     {
         private static void Main()
         {
@@ -8,7 +8,7 @@
             System.Console.ReadLine();  
         }
 
-        private static void printDiamondRecursive(string i_StarsStr, int i_MostLeftStar)
+        public static void printDiamondRecursive(string i_StarsStr, uint i_MostLeftStar)
         {
             string newStarsStr;
 
@@ -20,7 +20,7 @@
             {
                 System.Console.WriteLine(i_StarsStr);
                 newStarsStr = string.Format("{0}**", i_StarsStr);
-                newStarsStr = newStarsStr.Remove(i_MostLeftStar - 1, 1);
+                newStarsStr = newStarsStr.Remove((int)i_MostLeftStar - 1, 1);
                 printDiamondRecursive(newStarsStr, i_MostLeftStar - 1);
                 System.Console.WriteLine(i_StarsStr);
             }
