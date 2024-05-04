@@ -1,0 +1,16 @@
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 Nadir 207422486 Netanel 314938655\Ex1_02\bin\Debug\Ex1_02.exe.config
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 Nadir 207422486 Netanel 314938655\Ex1_02\bin\Debug\Ex1_02.exe
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 Nadir 207422486 Netanel 314938655\Ex1_02\bin\Debug\Ex1_02.pdb
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 Nadir 207422486 Netanel 314938655\Ex1_02\obj\Debug\Ex1_02.csproj.AssemblyReference.cache
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 Nadir 207422486 Netanel 314938655\Ex1_02\obj\Debug\Ex1_02.csproj.SuggestedBindingRedirects.cache
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 Nadir 207422486 Netanel 314938655\Ex1_02\obj\Debug\Ex1_02.csproj.CoreCompileInputs.cache
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 Nadir 207422486 Netanel 314938655\Ex1_02\obj\Debug\Ex1_02.exe
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 Nadir 207422486 Netanel 314938655\Ex1_02\obj\Debug\Ex1_02.pdb
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_02\bin\Debug\Ex1_02.exe.config
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_02\bin\Debug\Ex1_02.exe
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_02\bin\Debug\Ex1_02.pdb
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_02\obj\Debug\Ex1_02.csproj.AssemblyReference.cache
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_02\obj\Debug\Ex1_02.csproj.SuggestedBindingRedirects.cache
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_02\obj\Debug\Ex1_02.csproj.CoreCompileInputs.cache
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_02\obj\Debug\Ex1_02.exe
+C:\Users\nadir\source\repos\C# projects MTA\B24 Ex01 NadirElmakias 207422486 NetanelAlis 314938655\Ex1_02\obj\Debug\Ex1_02.pdb
