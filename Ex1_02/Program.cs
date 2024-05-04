@@ -5,7 +5,6 @@
         private static void Main()
         {
             printDiamondRecursive("    *", 4);
-            System.Console.ReadLine();  
         }
 
         public static void printDiamondRecursive(string i_StarsStr, uint i_MostLeftStar)

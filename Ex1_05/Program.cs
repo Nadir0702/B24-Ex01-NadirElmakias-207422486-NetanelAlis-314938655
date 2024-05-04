@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        private static void main()
+        private static void Main()
         {
             string numberStr;
             uint number = getInputFromUser(out numberStr);
@@ -12,7 +12,6 @@
             printNumOfDigitsDivisableByThree(number);
             printLargestDigit(number);
             printDigitsAvg(number);
-            System.Console.ReadLine();
         }
 
         private static void printDigitsAvg(uint i_Number)

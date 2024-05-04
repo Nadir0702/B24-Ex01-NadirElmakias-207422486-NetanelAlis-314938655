@@ -24,25 +24,27 @@ namespace Ex1_01
             handleStatistics(firstNumberStr, secondNumberStr, thirdNumberStr,
                              firstDecimal, secondDecimal, thirdDecimal,
                              maxDecimalNumber, minDecimalNumber);
-            System.Console.ReadLine();
         }
 
-        private static void handleStatistics(string firstNumberStr, string secondNumberStr, string thirdNumberStr,
-                                             int firstDecimal, int secondDecimal, int thirdDecimal,
-                                             int maxDecimalNumber, int minDecimalNumber)
+        private static void handleStatistics(string i_FirstNumberStr, string i_SecondNumberStr,
+                                             string i_ThirdNumberStr, int i_FirstDecimal,
+                                             int i_SecondDecimal, int i_ThirdDecimal,
+                                             int i_MaxDecimalNumber, int i_MinDecimalNumber)
         {
             float avgNumOfZeros;
             float avgNumOfOnes;
             int numOfPowsOfTwo;
             int numOfAscendingDigitsNumbers;
 
-            getAvgOccurrencesOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '0', out avgNumOfZeros);
-            getAvgOccurrencesOfChar(firstNumberStr, secondNumberStr, thirdNumberStr, '1', out avgNumOfOnes);
-            getNumOfPowsOfTwo(firstNumberStr, secondNumberStr, thirdNumberStr, out numOfPowsOfTwo);
-            getNumOfAscendingDigitsNumbers(firstDecimal, secondDecimal, thirdDecimal,
+            getAvgOccurrencesOfChar(i_FirstNumberStr, i_SecondNumberStr, i_ThirdNumberStr, '0',
+                                    out avgNumOfZeros);
+            getAvgOccurrencesOfChar(i_FirstNumberStr, i_SecondNumberStr, i_ThirdNumberStr, '1',
+                                    out avgNumOfOnes);
+            getNumOfPowsOfTwo(i_FirstNumberStr, i_SecondNumberStr, i_ThirdNumberStr, out numOfPowsOfTwo);
+            getNumOfAscendingDigitsNumbers(i_FirstDecimal, i_SecondDecimal, i_ThirdDecimal,
                                            out numOfAscendingDigitsNumbers);
             printStatistics(avgNumOfZeros, avgNumOfOnes, numOfPowsOfTwo, numOfAscendingDigitsNumbers,
-                            minDecimalNumber, maxDecimalNumber);
+                            i_MinDecimalNumber, i_MaxDecimalNumber);
         }
 
         private static void printStatistics(float i_AvgNumOfZeros, float i_AvgNumOfOnes, int i_NumOfPowsOfTwo,
@@ -93,21 +95,21 @@ The min number is: {5}",i_AvgNumOfZeros, i_AvgNumOfOnes, i_NumOfPowsOfTwo, i_Num
             o_NumOfAscendingDigitsNumbers = numOfAscendingDigitsNumbers;
         }
 
-        private static bool isAscendingDigits(int i_number)
+        private static bool isAscendingDigits(int i_Number)
         {
             bool ascendingDigits = true;
-            int currentOnesDigit = i_number % 10;
+            int currentOnesDigit = i_Number % 10;
             int nextOnesDigit;
 
-            if(i_number < 10)
+            if(i_Number < 10)
             {
                 ascendingDigits = false;
             }
 
-            while(ascendingDigits && i_number > 0)
+            while(ascendingDigits && i_Number > 0)
             {
-                i_number /= 10;
-                nextOnesDigit = i_number % 10;
+                i_Number /= 10;
+                nextOnesDigit = i_Number % 10;
                 if(nextOnesDigit >= currentOnesDigit)
                 {
                     ascendingDigits = false;
@@ -120,10 +122,9 @@ The min number is: {5}",i_AvgNumOfZeros, i_AvgNumOfOnes, i_NumOfPowsOfTwo, i_Num
         }
 
         private static void getNumOfPowsOfTwo(string i_FirstStr, string i_SecondStr, string i_ThirdStr,
-                                                out int o_NumOfPowsOfTwo)
+                                              out int o_NumOfPowsOfTwo)
         {
             int numOfPowsOfTwo = 0;
-            string resultStr;
 
             if (isPowOfTwo(i_FirstStr))
             {
@@ -143,20 +144,20 @@ The min number is: {5}",i_AvgNumOfZeros, i_AvgNumOfOnes, i_NumOfPowsOfTwo, i_Num
             o_NumOfPowsOfTwo = numOfPowsOfTwo;
         }
 
-        private static bool isPowOfTwo(string i_strToCheck)
+        private static bool isPowOfTwo(string i_StrToCheck)
         {
             int numOfOnes = 0;
-            int digit = 0;
+            int currentDigitToCheck = 0;
             bool powOfTwo = true;
 
-            if(i_strToCheck == "000000000")
+            if(i_StrToCheck == "000000000")
             {
                 powOfTwo = false;
             }
 
-            while(powOfTwo && digit < 9)
+            while(powOfTwo && currentDigitToCheck < 9)
             {
-                if(i_strToCheck[digit] == '1')
+                if(i_StrToCheck[currentDigitToCheck] == '1')
                 {
                     numOfOnes++;
                 }
@@ -166,14 +167,14 @@ The min number is: {5}",i_AvgNumOfZeros, i_AvgNumOfOnes, i_NumOfPowsOfTwo, i_Num
                     powOfTwo = false;
                 }
 
-                digit++;
+                currentDigitToCheck++;
             }
 
             return powOfTwo;
         }
 
         private static void getAvgOccurrencesOfChar(string i_FirstStr, string i_SecondStr, string i_ThirdStr,
-                                                 char i_Char, out float o_AvgNumOfCharOccurrences)
+                                                    char i_Char, out float o_AvgNumOfCharOccurrences)
         {
             float numOfCharOccurrences = 0;
 
@@ -199,25 +200,25 @@ The min number is: {5}",i_AvgNumOfZeros, i_AvgNumOfOnes, i_NumOfPowsOfTwo, i_Num
         }
 
         private static void printConvertedDecimalsAscendingOrder(int i_FirstNum, int i_SecondNum, int i_ThirdNum,
-                                                                 int i_maxNum, int i_minNum)
+                                                                 int i_MaxNum, int i_MinNum)
         {
-            int middle;
+            int middleNumber;
             string resultStr;
 
-            if(i_FirstNum != i_maxNum && i_FirstNum != i_minNum)
+            if(i_FirstNum != i_MaxNum && i_FirstNum != i_MinNum)
             {
-                middle = i_FirstNum;
+                middleNumber = i_FirstNum;
             }
-            else if(i_SecondNum != i_maxNum && i_SecondNum != i_minNum)
+            else if(i_SecondNum != i_MaxNum && i_SecondNum != i_MinNum)
             {
-                middle = i_SecondNum;
+                middleNumber = i_SecondNum;
             }
             else // if(i_ThirdNum <= max && i_ThirdNum >= min)
             {
-                middle = i_ThirdNum;
+                middleNumber = i_ThirdNum;
             }
 
-            resultStr = string.Format("The decimal numbers are: {0}, {1}, {2}", i_minNum, middle, i_maxNum);
+            resultStr = string.Format("The decimal numbers are: {0}, {1}, {2}", i_MinNum, middleNumber, i_MaxNum);
             System.Console.WriteLine(resultStr);
         }
 
@@ -255,8 +256,7 @@ The min number is: {5}",i_AvgNumOfZeros, i_AvgNumOfOnes, i_NumOfPowsOfTwo, i_Num
 
         private static void checkIfInputValid(ref string io_StrToCheck)
         {
-            while(io_StrToCheck.Length != 9 ||
-                  !isBinaryNumber(io_StrToCheck))
+            while(io_StrToCheck.Length != 9 || !isBinaryNumber(io_StrToCheck))
             {
                 System.Console.WriteLine("The input you entered is invalid. Please try again.");
                 io_StrToCheck = System.Console.ReadLine();
