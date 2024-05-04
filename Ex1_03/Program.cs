@@ -4,6 +4,11 @@
     {
         private static void Main()
         {
+            runProgram();
+        }
+
+        private static void runProgram()
+        {
             uint diamondHeight;
             string startingStr;
             uint mostLeftStar;

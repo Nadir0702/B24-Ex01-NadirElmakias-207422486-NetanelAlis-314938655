@@ -4,6 +4,11 @@ namespace Ex1_01
     {
         private static void Main()
         {
+            runProgram();
+        }
+
+        private static void runProgram()
+        {
             string firstNumberStr;
             string secondNumberStr;
             string thirdNumberStr;
@@ -75,7 +80,6 @@ The min number is: {5}",i_AvgNumOfZeros, i_AvgNumOfOnes, i_NumOfPowsOfTwo, i_Num
             out int o_NumOfAscendingDigitsNumbers)
         {
             int numOfAscendingDigitsNumbers = 0;
-            string resultStr;
 
             if (isAscendingDigits(i_FirstNum))
             {
