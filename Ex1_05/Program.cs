@@ -10,7 +10,23 @@
             System.Console.WriteLine($"{number} is valid!");
             printNumOfDigitsSmallerThanOnes(number);
             printNumOfDigitsDivisableByThree(number);
+            printLargestDigit(number);
             System.Console.ReadLine();
+        }
+
+        private static void printLargestDigit(uint i_Number)
+        {
+            uint currentDigit = i_Number % 10;
+            uint maxDigit = 0;
+
+            for (int i = 0; i < 8; i++)
+            {
+                maxDigit = System.Math.Max(maxDigit, currentDigit);
+                i_Number /= 10;
+                currentDigit = i_Number % 10;
+            }
+
+            System.Console.WriteLine($"The largest digit is: {maxDigit}");
         }
 
         private static void printNumOfDigitsDivisableByThree(uint i_Number)
