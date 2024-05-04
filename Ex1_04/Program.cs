@@ -8,8 +8,25 @@
 
             getInputFromUser(out str);
             System.Console.WriteLine($"{str} is {(isPalindrome(str) ? "" : "Not ")}a Palindrome!");
-
+            System.Console.WriteLine($"{str} is {(isDivisableByFour(str) ? "" : "Not ")}divisable by 4");
             System.Console.ReadLine();
+        }
+
+        private static bool isDivisableByFour(string i_StrToCheck)
+        {
+            bool divisable = true;
+            uint numberToCheck;
+
+            if(!uint.TryParse(i_StrToCheck, out numberToCheck))
+            {
+                divisable = false;
+            }
+            else if (numberToCheck % 4 != 0)
+            {
+                divisable = false;
+            }
+
+            return divisable;
         }
 
         private static bool isPalindrome(string i_StrToCheck)
