@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        private static void Main()
+        private static void main()
         {
             string numberStr;
             uint number = getInputFromUser(out numberStr);
@@ -11,7 +11,25 @@
             printNumOfDigitsSmallerThanOnes(number);
             printNumOfDigitsDivisableByThree(number);
             printLargestDigit(number);
+            printDigitsAvg(number);
             System.Console.ReadLine();
+        }
+
+        private static void printDigitsAvg(uint i_Number)
+        {
+            uint currentDigit = i_Number % 10;
+            uint sum = 0;
+            float average;
+
+            for (int i = 0; i < 8; i++)
+            {
+                sum += currentDigit;
+                i_Number /= 10;
+                currentDigit = i_Number % 10;
+            }
+
+            average = (float)sum / 8;
+            System.Console.WriteLine($"The average of the digits is: {average}");
         }
 
         private static void printLargestDigit(uint i_Number)
