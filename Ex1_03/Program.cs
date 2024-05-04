@@ -11,12 +11,12 @@
             getInputFromUser(out diamondHeight);
             createStartingStr(diamondHeight, out startingStr, out mostLeftStar);
             Ex1_02.Program.printDiamondRecursive(startingStr, mostLeftStar);
-            System.Console.ReadLine();
         }
 
-        private static void createStartingStr(uint i_DiamondHeight, out string o_StartingStr, out uint o_StarIndex)
+        private static void createStartingStr(uint i_DiamondHeight, out string o_StartingStr,
+                                              out uint o_StarIndex)
         {
-            System.Text.StringBuilder SB = new System.Text.StringBuilder();
+            System.Text.StringBuilder startingStrBuilder = new System.Text.StringBuilder();
             uint numOfSpaces = 0;
 
             if(i_DiamondHeight % 2 == 0)
@@ -27,11 +27,11 @@
             numOfSpaces = (i_DiamondHeight - 1) / 2;
             for (int i = 0; i < numOfSpaces; i++)
             {
-                SB.Append(" ");
+                startingStrBuilder.Append(" ");
             }
 
-            SB.Append("*");
-            o_StartingStr = SB.ToString();
+            startingStrBuilder.Append("*");
+            o_StartingStr = startingStrBuilder.ToString();
             o_StarIndex = numOfSpaces;
         }
 

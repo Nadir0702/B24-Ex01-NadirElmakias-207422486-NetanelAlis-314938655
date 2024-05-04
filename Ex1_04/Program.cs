@@ -1,6 +1,4 @@
-﻿using System.IO.Pipes;
-
-namespace Ex1_04
+﻿namespace Ex1_04
 {
     internal class Program
     {
@@ -12,7 +10,6 @@ namespace Ex1_04
             System.Console.WriteLine($"{str} is {(isPalindrome(str) ? "" : "Not ")}a Palindrome!");
             System.Console.WriteLine($"{str} is {(isDivisableByFour(str) ? "" : "Not ")}divisable by 4");
             printNumberOfLowercaseChars(str);
-            System.Console.ReadLine();
         }
 
         private static void printNumberOfLowercaseChars(string i_Str)
@@ -57,7 +54,6 @@ namespace Ex1_04
         private static bool isPalindrome(string i_StrToCheck)
         {
             bool palindrome;
-            string tempStr;
 
             if(i_StrToCheck.Length == 0)
             {
@@ -71,9 +67,9 @@ namespace Ex1_04
                 }
                 else
                 {
-                    tempStr = i_StrToCheck.Remove(0, 1);
-                    tempStr = tempStr.Remove(tempStr.Length - 1, 1);
-                    palindrome = isPalindrome(tempStr);
+                    i_StrToCheck = i_StrToCheck.Remove(i_StrToCheck.Length - 1, 1);
+                    i_StrToCheck = i_StrToCheck.Remove(0, 1);
+                    palindrome = isPalindrome(i_StrToCheck);
                 }
             }
 
@@ -83,7 +79,7 @@ namespace Ex1_04
         private static bool isValidStr(string i_StrToCheck)
         {
             bool valid = true;
-            int strindex = 0;
+            int strIndex = 0;
 
             if(i_StrToCheck.Length != 10)
             {
@@ -91,26 +87,26 @@ namespace Ex1_04
             }
             else if (char.IsLetter(i_StrToCheck[0]))
             {
-                while(valid && strindex < 10)
+                while(valid && strIndex < 10)
                 {
-                    if(!char.IsLetter(i_StrToCheck[strindex]))
+                    if(!char.IsLetter(i_StrToCheck[strIndex]))
                     {
                         valid = false;
                     }
 
-                    strindex++;
+                    strIndex++;
                 }
             }
             else if (char.IsDigit(i_StrToCheck[0]))
             {
-                while (valid && strindex < 10)
+                while (valid && strIndex < 10)
                 {
-                    if (!char.IsDigit(i_StrToCheck[strindex]))
+                    if (!char.IsDigit(i_StrToCheck[strIndex]))
                     {
                         valid = false;
                     }
 
-                    strindex++;
+                    strIndex++;
                 }
             }
             else
